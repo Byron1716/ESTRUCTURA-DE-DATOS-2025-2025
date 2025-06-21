@@ -1,0 +1,104 @@
+struct Contacto
+{
+    public string Nombre;
+    public string Telefono;
+    public string Correo;
+    public string Direccion;
+
+    public Contacto(string nombre, string telefono, string correo, string direccion)
+    {
+        Nombre = nombre;
+        Telefono = telefono;
+        Correo = correo;
+        Direccion = direccion;
+    }
+}
+
+class AgendaTelefonica
+{
+    private Contacto[] contactos;
+    private int cantidad;
+
+    public AgendaTelefonica(int tamaño)
+    {
+        contactos = new Contacto[tamaño];
+        cantidad = 0;
+    }
+
+    public void AgregarContacto()
+    {
+        if (cantidad >= contactos.Length)
+        {
+            System.Console.WriteLine("La agenda está llena.");
+            return;
+        }
+
+        System.Console.WriteLine("Ingrese el nombre:");
+        string nombre = System.Console.ReadLine();
+        System.Console.WriteLine("Ingrese el teléfono:");
+        string telefono = System.Console.ReadLine();
+        System.Console.WriteLine("Ingrese el correo electrónico:");
+        string correo = System.Console.ReadLine();
+        System.Console.WriteLine("Ingrese la dirección:");
+        string direccion = System.Console.ReadLine();
+
+        contactos[cantidad] = new Contacto(nombre, telefono, correo, direccion);
+        cantidad++;
+
+        System.Console.WriteLine("Contacto agregado exitosamente.\n");
+    }
+
+    public void MostrarContactos()
+    {
+        if (cantidad == 0)
+        {
+            System.Console.WriteLine("\n La agenda está vacía.");
+            return;
+        }
+
+        System.Console.WriteLine("\n Lista de contactos:");
+        for (int i = 0; i < cantidad; i++)
+        {
+            System.Console.WriteLine($"{i + 1}. {contactos[i].Nombre} | {contactos[i].Telefono} | {contactos[i].Correo} | {contactos[i].Direccion}");
+        }
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        AgendaTelefonica agenda = new AgendaTelefonica(10);
+
+        int opcion = 0;
+        do
+        {
+            System.Console.WriteLine("\n Menú de la Agenda:");
+            System.Console.WriteLine("\n1. Agregar contacto");
+            System.Console.WriteLine("2. Mostrar contactos");
+            System.Console.WriteLine("3. Salir");
+            System.Console.WriteLine("");
+            System.Console.Write("\n Seleccione una opción: ");
+
+            string entrada = System.Console.ReadLine();
+            int.TryParse(entrada, out opcion);
+
+            switch (opcion)
+            {
+                case 1:
+                    agenda.AgregarContacto();
+                    break;
+                case 2:
+                    agenda.MostrarContactos();
+                    break;
+                case 3:
+                    System.Console.WriteLine(" Cerrando agenda.");
+                    break;
+                default:
+                    System.Console.WriteLine("Opción no válida.");
+                    break;
+            }
+        } while (opcion != 3);
+    }
+}
+
