@@ -83,6 +83,38 @@ class Program
         {
             Console.Write(numeros[numeros.Count - i] + ", ");
         }
+
+        Console.WriteLine();
+        Console.WriteLine();
+        Console.WriteLine();
+        Console.WriteLine("EJERCICIO #4");
+        // Crear una lista con las letras del abecedario (A-Z)
+        List<char> abecedario = new List<char>();
+        for (char letra = 'A'; letra <= 'Z'; letra++)
+        {
+            abecedario.Add(letra);
+        }
+
+        // Crear una nueva lista eliminando las letras en posiciones múltiplos de 3
+        List<char> resultado = new List<char>();
+        for (int i = 0; i < abecedario.Count; i++)
+        {
+            if ((i + 1) % 3 != 0) // Posición humana: 1-based index
+            {
+                resultado.Add(abecedario[i]);
+            }
+        }
+
+        // Mostrar la lista resultante
+        Console.WriteLine();
+        Console.WriteLine("Letras que no están en posiciones múltiplos de 3:");
+        foreach (char letra in resultado)
+        {
+            Console.Write(letra + " ");
+        }
+
+        Console.WriteLine();
+        ;
         
     }
 }
