@@ -1,0 +1,15 @@
+C:\Users\Byron Rosado\SEMANA6\bin\Debug\net9.0\SEMANA6.exe
+C:\Users\Byron Rosado\SEMANA6\bin\Debug\net9.0\SEMANA6.deps.json
+C:\Users\Byron Rosado\SEMANA6\bin\Debug\net9.0\SEMANA6.runtimeconfig.json
+C:\Users\Byron Rosado\SEMANA6\bin\Debug\net9.0\SEMANA6.dll
+C:\Users\Byron Rosado\SEMANA6\bin\Debug\net9.0\SEMANA6.pdb
+C:\Users\Byron Rosado\SEMANA6\obj\Debug\net9.0\SEMANA6.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Byron Rosado\SEMANA6\obj\Debug\net9.0\SEMANA6.AssemblyInfoInputs.cache
+C:\Users\Byron Rosado\SEMANA6\obj\Debug\net9.0\SEMANA6.AssemblyInfo.cs
+C:\Users\Byron Rosado\SEMANA6\obj\Debug\net9.0\SEMANA6.csproj.CoreCompileInputs.cache
+C:\Users\Byron Rosado\SEMANA6\obj\Debug\net9.0\SEMANA6.dll
+C:\Users\Byron Rosado\SEMANA6\obj\Debug\net9.0\refint\SEMANA6.dll
+C:\Users\Byron Rosado\SEMANA6\obj\Debug\net9.0\SEMANA6.pdb
+C:\Users\Byron Rosado\SEMANA6\obj\Debug\net9.0\SEMANA6.genruntimeconfig.cache
+C:\Users\Byron Rosado\SEMANA6\obj\Debug\net9.0\ref\SEMANA6.dll
+C:\Users\Byron Rosado\SEMANA6\obj\Debug\net9.0\SEMANA6.sourcelink.json
