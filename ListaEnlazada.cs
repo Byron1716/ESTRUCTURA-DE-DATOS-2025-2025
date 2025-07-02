@@ -1,3 +1,4 @@
+//Ejercicio 1 de las listas Enlazadas
 public class Nodo           //Definimos la clase Nodo de manera pública
 {
     public int Valor;           //Definimos la variable valor, misma que tendrá datos enteros
