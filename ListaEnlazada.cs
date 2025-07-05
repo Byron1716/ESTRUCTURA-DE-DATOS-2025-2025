@@ -1,22 +1,74 @@
-//Creamos la lista que enlaza
-ListaEnlazada lista = new ListaEnlazada();
-lista.Agregar(10);          //Agregamos los datos 
-lista.Agregar(20);          //Agregamos los datos 
-lista.Agregar(30);          //Agregamos los datos 
-lista.Agregar(40);          //Agregamos los datos 
+public class ListaEnlazada
+{
+    public Nodo Cabeza;
 
-Console.WriteLine();
-Console.WriteLine("EJERCICIO 1");
-Console.WriteLine();
-Console.WriteLine();
-Console.WriteLine("Original:");         
-lista.Mostrar();                        //Imprimimos la lista original
+    public void Agregar(int valor)
+    {
+        Nodo nuevo = new Nodo(valor);
+        if (Cabeza == null)
+        {
+            Cabeza = nuevo;
+        }
+        else
+        {
+            Nodo actual = Cabeza;
+            while (actual.Siguiente != null)
+            {
+                actual = actual.Siguiente;
+            }
+            actual.Siguiente = nuevo;
+        }
+    }
 
-lista.Invertir();                       //Implementamos la función invertir
+    public void Mostrar()
+    {
+        Nodo actual = Cabeza;
+        while (actual != null)
+        {
+            System.Console.Write(actual.Dato + " → ");
+            actual = actual.Siguiente;
+        }
+        System.Console.WriteLine("null");
+    }
 
-Console.WriteLine("Invertida:");
-lista.Mostrar();                        //Imprimimos la lista invertida
-Console.WriteLine();
-Console.WriteLine();
+    public void EliminarFueraDeRango(int minimo, int maximo)
+    {
+        while (Cabeza != null && (Cabeza.Dato < minimo || Cabeza.Dato > maximo))
+        {
+            Cabeza = Cabeza.Siguiente;
+        }
+
+        Nodo actual = Cabeza;
+        while (actual != null && actual.Siguiente != null)
+        {
+            if (actual.Siguiente.Dato < minimo || actual.Siguiente.Dato > maximo)
+            {
+                actual.Siguiente = actual.Siguiente.Siguiente;
+            }
+            else
+            {
+                actual = actual.Siguiente;
+            }
+        }
+    }
+
+    public void Invertir()
+    {
+        Nodo anterior = null;
+        Nodo actual = Cabeza;
+        Nodo siguiente;
+
+        while (actual != null)
+        {
+            siguiente = actual.Siguiente;
+            actual.Siguiente = anterior;
+            anterior = actual;
+            actual = siguiente;
+        }
+
+        Cabeza = anterior;
+    }
+}
+
 
 
