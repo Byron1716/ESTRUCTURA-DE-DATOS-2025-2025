@@ -1,6 +1,34 @@
+class PilaManual
+{
+    char nombre;
+    int[] pila;
+    int tope;
+
+    public PilaManual(char id, int capacidad)
+    {
+        nombre = id;
+        pila = new int[capacidad];
+        tope = -1;
+    }
+
+    public void Push(int valor)
+    {
+        pila[++tope] = valor;
+    }
+
+    public int Pop()
+    {
+        return pila[tope--];
+    }
+
+    public char Nombre()
+    {
+        return nombre;
+    }
+}
 class Balanceador           //Definimos una clase llamada Balanceador, la cual contiene el método principal Main.
 {
-    static void Main()          //Creamos el punto de partida de entrada principal 
+    public static void AnalizarExpresion()          //Creamos el punto de partida de entrada principal 
     {
         Console.WriteLine();
         Console.WriteLine();
@@ -53,5 +81,57 @@ class Balanceador           //Definimos una clase llamada Balanceador, la cual c
         Console.WriteLine(mensaje);                                                 //Imprimimos el mensaje
         Console.WriteLine();
         Console.WriteLine();
+    }
+
+}
+class TorresDeHanoi
+{
+    public static void Ejecutar()
+    {
+        Console.WriteLine("EJERCICIO 2: TORRES DE HANOI");
+        Console.WriteLine();
+        int n = 5;
+
+        PilaManual origen = new PilaManual('A', n);
+        PilaManual auxiliar = new PilaManual('B', n);
+        PilaManual destino = new PilaManual('C', n);
+
+        for (int i = n; i >= 1; i--)
+        {
+            origen.Push(i);
+        }
+
+        MoverTorres(n, origen, destino, auxiliar);
+    }
+
+    static void MoverTorres(int n, PilaManual origen, PilaManual destino, PilaManual auxiliar)
+    {
+        if (n == 1)
+        {
+            int disco = origen.Pop();
+            destino.Push(disco);
+            ImprimirMovimiento(disco, origen, destino);
+            return;
+        }
+
+        MoverTorres(n - 1, origen, auxiliar, destino);
+        int discoCentral = origen.Pop();
+        destino.Push(discoCentral);
+        ImprimirMovimiento(discoCentral, origen, destino);
+        MoverTorres(n - 1, auxiliar, destino, origen);
+    }
+
+    static void ImprimirMovimiento(int disco, PilaManual desde, PilaManual hacia)
+    {
+        Console.WriteLine("Mover disco " + disco + " de " + desde.Nombre() + " a " + hacia.Nombre());
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Balanceador.AnalizarExpresion();
+        TorresDeHanoi.Ejecutar();
     }
 }
