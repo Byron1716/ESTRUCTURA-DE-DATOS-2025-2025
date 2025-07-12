@@ -84,23 +84,23 @@ class Balanceador           //Definimos una clase llamada Balanceador, la cual c
     }
 
 }
-class TorresDeHanoi
+class TorresDeHanoi                                 //Definimos la clase Torres de Hanoi
 {
     public static void Ejecutar()
     {
         Console.WriteLine("EJERCICIO 2: TORRES DE HANOI");
         Console.WriteLine();
         int n = 5;
-
-        PilaManual origen = new PilaManual('A', n);
-        PilaManual auxiliar = new PilaManual('B', n);
+        //definimos la cantidad de barras con las que podamos mover los discos
+        PilaManual origen = new PilaManual('A', n);         
+        PilaManual auxiliar = new PilaManual('B', n);       
         PilaManual destino = new PilaManual('C', n);
-
+        //Usamos un for para recorrer los discos selecionados 
         for (int i = n; i >= 1; i--)
         {
-            origen.Push(i);
+            origen.Push(i);         //Agregamos el números de discos
         }
-
+        //Nombramos los nombres de los pilares entre los cuales se van a mover nuestros discos
         MoverTorres(n, origen, destino, auxiliar);
     }
 
@@ -108,9 +108,9 @@ class TorresDeHanoi
     {
         if (n == 1)
         {
-            int disco = origen.Pop();
+            int disco = origen.Pop();           //Con esto cambiaremos entre los pilares de Hanoi
             destino.Push(disco);
-            ImprimirMovimiento(disco, origen, destino);
+            ImprimirMovimiento(disco, origen, destino);     //Imprimimos los movimientos
             return;
         }
 
@@ -120,7 +120,7 @@ class TorresDeHanoi
         ImprimirMovimiento(discoCentral, origen, destino);
         MoverTorres(n - 1, auxiliar, destino, origen);
     }
-
+        // definimos el como se van a mover los discos (punto de origen y punto de llegada)
     static void ImprimirMovimiento(int disco, PilaManual desde, PilaManual hacia)
     {
         Console.WriteLine("Mover disco " + disco + " de " + desde.Nombre() + " a " + hacia.Nombre());
@@ -129,9 +129,11 @@ class TorresDeHanoi
 
 class Program
 {
-    static void Main()
+    static void Main()      //Definimos el método principal para ejecutar todos los métodos
     {
-        Balanceador.AnalizarExpresion();
+        //Ejecutamos ambos métodos
+        Balanceador.AnalizarExpresion();            
         TorresDeHanoi.Ejecutar();
     }
 }
+
