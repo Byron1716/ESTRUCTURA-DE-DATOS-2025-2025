@@ -1,0 +1,89 @@
+namespace ParqueDiversiones                         //Comenzamos con un “namespace” para que el código esté mucho más organizado. 
+{
+    class Persona                                   //Creamos la clase "Programa"
+    {
+        public string Nombre { get; set; }          //Definimos una propiedad automática
+
+        public Persona(string nombre)               //Creamos el métdo Constructor y lo ponemos público
+        {
+            Nombre = nombre;
+        }
+    }
+
+    class Atraccion                                 //Creamos una clase Atracción la cual tendrá la capacidad 
+    {
+        private int capacidad;                      //Ahora definimos la variable capacidad y que sea privada
+        private System.Collections.Generic.Queue<Persona> cola;                 //Creamos una cola genérica que almacene los objetos del tipo persona 
+        private System.Collections.Generic.List<Persona> asientosAsignados;     //Creamos una lista genérica que almacene los objetos del tipo persona para los asientos asignados
+
+        public Atraccion(int capacidad)             //Método público para la capacidad de la Atracción
+        {
+            this.capacidad = capacidad;
+            cola = new System.Collections.Generic.Queue<Persona>();             //guardamos la cola genérica en una variable genérica
+            asientosAsignados = new System.Collections.Generic.List<Persona>(); //guardamos la lista genérica asignada en la varibale AsientosAsignados
+        
+        }
+        
+        public void AgregarPersona(Persona persona)                                             //Añadimos un método que se llame Agregar Persona
+        {
+            if (cola.Count < capacidad)                                                         //integramos un if para controlar la cantidad de personas que est´pan en la cola
+            {
+                cola.Enqueue(persona);                                                          //Simulamos que una persona entra en la fila de la atracción
+                Console.WriteLine(persona.Nombre + " ha sido agregado a la cola.");
+            }
+            else                                                                                //Cuando el número de la cola se mayor a la capcidad slatará un mensaje de no capacidad
+            {
+                Console.WriteLine("Lo sentimos, no hay más espacio en la cola para " + persona.Nombre + ".");       //Se imprime un mensaje en donde nos indica que no hay mas espacio; esto pone a prueba la capacidad que nosotros asignamos como límite
+            }
+        }
+
+        public void AsignarAsientos()                                                           //Añadimos un método para asignar asientos 
+        {
+            while (cola.Count > 0 && asientosAsignados.Count < capacidad)                       //Creamos un bucle en donde se cumpla que la asignaci+on máxima de personas sean 30 personas
+            {
+                Persona persona = cola.Dequeue();                                               //Sacamos cada primer elemento de la cola
+                asientosAsignados.Add(persona);                                                 //Lo añadimos a la lista perosnas
+                Console.WriteLine("Asiento asignado a " + persona.Nombre + ".");                //imprimimos la asignación del asiento mas el nombre de la persona a la que le fue asignado
+            }
+        }
+
+        public void MostrarAsientos()                                                           //Creamos un método con el cual se van a mostrar los asientos junto con su asignación
+        {
+            Console.WriteLine("\nLista de personas con asiento asignado:");                     //Hacemos una impresión de lo antes mencionado
+            for (int i = 0; i < asientosAsignados.Count; i++)
+            {
+                Console.WriteLine("Asiento " + (i + 1) + ": " + asientosAsignados[i].Nombre);   //Con esto imprimimos el asiento mas el número que aumenta en cada vuelta
+            }
+        }
+    }
+
+    class Program                                                                               // Creamos la Clase Progrma 
+    {
+        static void Main(string[] args)                                                         //El código principal que tiene el método void
+        
+{
+            List<string> nombresHombres = new List<string> { "Carlos", "Luis", "Miguel", "Juan", "Andrés", "Pedro", "Jorge", "Fernando" };      //Agregamos una lista de nombres de mujeres
+            List<string> nombresMujeres = new List<string> { "Ana", "María", "Lucía", "Sofía", "Laura", "Carmen", "Isabel", "Valentina" };      //Agregamos una lista de nombres de mujeres
+
+            Random rnd = new Random();                                                          //Con el método random vamos a asignar nombres al azar para la asignación de los asientos
+            Atraccion atraccion = new Atraccion(30);
+
+            for (int i = 1; i <= 35; i++)                                                       //Con este for recorremos desde 1 a 35 la cantidad de contactos
+            {
+                bool esHombre = rnd.Next(2) == 0;
+                string nombre = esHombre
+                    ? nombresHombres[rnd.Next(nombresHombres.Count)]                            //Asignamos nombres de hombres al azar
+                    : nombresMujeres[rnd.Next(nombresMujeres.Count)];                           //Asignamos nombres de mujeres al azar
+
+                Persona persona = new Persona(nombre);
+                atraccion.AgregarPersona(persona);
+            }
+
+            atraccion.AsignarAsientos();                                                        //Llamamos al método Asignar Asientos
+            atraccion.MostrarAsientos();                                                        //Llamamos al método Mostrar Asiento
+
+            Console.ReadLine();                                                                 //Imprimimos un espacio para que el código se vea mas estructurado
+        }
+    }
+}
+
