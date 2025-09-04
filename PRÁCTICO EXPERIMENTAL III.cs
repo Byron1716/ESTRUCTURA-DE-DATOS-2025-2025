@@ -50,16 +50,21 @@ class Program
         }
 
         // Mostrar los equipos y sus jugadores
+        List<string> torneoLigadeCampeones = new List<string>();
         foreach (var equipo in Equipos)                                             //Creamos un ciclo para que se impriman todas las listas de los equipos
         {
-            int number = 0;                                                          //Finalmente creamos una varibale de tipo número para enumerar a los jugadores de cada club
+            int number = 0;
+            Console.WriteLine();                                                        //Finalmente creamos una varibale de tipo número para enumerar a los jugadores de cada club
             Console.WriteLine($"\n{equipo.Key} tiene los siguientes jugadores:");    //Imprimimos los jugadores que cada equipo tienen
             foreach (var jugador in equipo.Value)
             {
                 number++;                                                           //aumentamos en uno cada vez que la varibale haga este ciclo
                 Console.WriteLine($" {number}.- {jugador}");                        //Finalemnte imprmimos el enumerado del equipo mas el nombre del jugador
             }
+            torneoLigadeCampeones.Add(equipo.Key);                                  //agregamos cada equipo al Torneo
+            Console.WriteLine($"\nEl equipo {equipo.Key} fue agregado correctamente al torneo LIGA DE CAMPEONES"); // imprimos la confirmación de que cada equipo fue agregado correctamente
         }
         Console.WriteLine();
     }
 }
+
